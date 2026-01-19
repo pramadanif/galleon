@@ -1,172 +1,321 @@
+import Image from "next/image";
+import { Navbar } from "@/components/Navbar";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
-import { Icons, EthIcon, StacksIcon } from "@/components/Icons";
+import { Icons, EthIcon, StacksIcon, BridgeIcon } from "@/components/Icons";
 import { ProblemCard } from "@/components/ProblemCard";
-import { Dashboard } from "@/components/Dashboard";
+import { FlowStep } from "@/components/FlowStep";
+import { CodeBlock } from "@/components/CodeBlock";
+import { FeatureCard } from "@/components/FeatureCard";
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-aegis-cream font-sans text-aegis-ink selection:bg-aegis-orange selection:text-aegis-ink">
-            {/* 1. HERO SECTION */}
-            <Section className="flex flex-col items-center justify-center min-h-[90vh] text-center pt-32 pb-20">
-                <div className="mb-6 px-3 py-1 border border-aegis-ink/10 bg-aegis-sand/30 rounded-full inline-flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-aegis-orange"></span>
-                    <span className="text-xs font-mono uppercase tracking-wide font-bold">
-                        Protocol V1 Live
-                    </span>
-                </div>
+        <div className="min-h-screen bg-galleon-cream font-sans text-galleon-ink selection:bg-galleon-orange selection:text-galleon-ink">
+            <Navbar />
 
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[1.1]">
-                    Programmable <span className="text-aegis-orange">USDCx Escrow</span>
-                </h1>
-
-                <p className="text-xl md:text-2xl text-aegis-ink/70 max-w-2xl mx-auto mb-16 leading-relaxed">
-                    Bringing Ethereum capital to Bitcoin builders through deterministic
-                    execution.
-                </p>
-
-                {/* Architecture Diagram */}
-                <div className="w-full max-w-3xl mb-16 px-4">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 relative">
-                        {/* Mobile Line Connector */}
-                        <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-dashed border-l border-aegis-ink/20 -z-10 md:hidden"></div>
-                        {/* Desktop Line Connector */}
-                        <div className="hidden md:block absolute left-0 right-0 top-1/2 h-0.5 border-t border-dashed border-aegis-ink/20 -z-10"></div>
-
-                        <div className="flex flex-col items-center bg-aegis-cream p-4 z-10">
-                            <div className="w-16 h-16 rounded-2xl bg-aegis-sand flex items-center justify-center mb-3 shadow-sm border border-aegis-ink/5">
-                                <EthIcon />
-                            </div>
-                            <span className="font-mono text-sm font-bold">Ethereum</span>
-                            <span className="text-xs text-aegis-ink/50 mt-1">
-                                USDC Deposit
-                            </span>
-                        </div>
-
-                        <Icons.ArrowRight className="text-aegis-ink/40 rotate-90 md:rotate-0 bg-aegis-cream z-10 p-1 rounded-full" />
-
-                        <div className="flex flex-col items-center bg-aegis-cream p-4 z-10">
-                            <div className="w-16 h-16 rounded-2xl bg-aegis-sand flex items-center justify-center mb-3 shadow-sm border border-aegis-ink/5">
-                                <StacksIcon />
-                            </div>
-                            <span className="font-mono text-sm font-bold">Stacks</span>
-                            <span className="text-xs text-aegis-ink/50 mt-1">Mint USDCx</span>
-                        </div>
-
-                        <Icons.ArrowRight className="text-aegis-ink/40 rotate-90 md:rotate-0 bg-aegis-cream z-10 p-1 rounded-full" />
-
-                        <div className="flex flex-col items-center bg-aegis-cream p-4 z-10">
-                            <div className="w-16 h-16 rounded-2xl bg-aegis-ink text-aegis-cream flex items-center justify-center mb-3 shadow-sm">
-                                <Icons.Lock size={24} />
-                            </div>
-                            <span className="font-mono text-sm font-bold">Escrow</span>
-                            <span className="text-xs text-aegis-ink/50 mt-1">
-                                Clarity Contract
-                            </span>
-                        </div>
-
-                        <Icons.ArrowRight className="text-aegis-ink/40 rotate-90 md:rotate-0 bg-aegis-cream z-10 p-1 rounded-full" />
-
-                        <div className="flex flex-col items-center bg-aegis-cream p-4 z-10">
-                            <div className="w-16 h-16 rounded-2xl bg-aegis-orange text-aegis-ink flex items-center justify-center mb-3 shadow-sm">
-                                <Icons.Code size={24} />
-                            </div>
-                            <span className="font-mono text-sm font-bold">Builder</span>
-                            <span className="text-xs text-aegis-ink/50 mt-1">
-                                Milestone Unlock
-                            </span>
-                        </div>
+            {/* ========================================
+          1. HERO SECTION
+      ======================================== */}
+            <Section className="pt-32 pb-20 min-h-screen flex flex-col justify-center">
+                <div className="text-center max-w-5xl mx-auto">
+                    {/* Protocol Badge */}
+                    <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 bg-galleon-sand/50 border border-galleon-ink/10 rounded-full">
+                        <span className="w-2 h-2 rounded-full bg-galleon-orange animate-pulse" />
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                            Bitcoin Olympics Hackathon
+                        </span>
                     </div>
-                </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                    <Button icon={<Icons.ArrowRight size={16} />}>Start Escrow</Button>
-                    <a
-                        href="#"
-                        className="flex items-center justify-center px-6 py-3 text-sm font-semibold text-aegis-ink/60 hover:text-aegis-ink transition-colors"
-                    >
-                        Read Documentation
-                    </a>
-                </div>
-            </Section>
+                    {/* Main Headline */}
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 leading-[0.95]">
+                        GALLEON
+                    </h1>
 
-            {/* 2. PROBLEM SECTION */}
-            <Section className="bg-aegis-cream" id="problem">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center tracking-tight">
-                        Why Funding Bitcoin L2 Builders Is{" "}
-                        <span className="border-b-4 border-aegis-orange/30">Broken</span>
+                    {/* Subheadline */}
+                    <h2 className="text-xl md:text-2xl font-medium text-galleon-ink/80 mb-4 max-w-3xl mx-auto leading-relaxed">
+                        Programmable <span className="text-galleon-orange font-bold">USDCx Escrow</span> Bringing Ethereum Capital to Bitcoin Builders
                     </h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <ProblemCard
-                            icon={<Icons.ShieldAlert size={24} />}
-                            title="Risky Manual Bridging"
-                            description="Investors fear complex bridges. Manual wrapping introduces human error and custody risk."
-                        />
-                        <ProblemCard
-                            icon={<Icons.TrendingUp size={24} />}
-                            title="Volatility Exposure"
-                            description="Grants in BTC or STX fluctuate wildly. Builders need stablecoin predictability for payroll."
-                        />
-                        <ProblemCard
-                            icon={<Icons.Link size={24} />}
-                            title="No On-Chain Trust"
-                            description="Ethereum investors have no visibility or enforcement on Bitcoin layers. Blind trust is required."
-                        />
+
+                    {/* Target Audience */}
+                    <p className="text-base text-galleon-ink/50 font-mono mb-12">
+                        For Ecosystem Funds, DAOs, and Institutional Grants
+                    </p>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                        <Button className="h-12 px-8 text-base" icon={<Icons.ArrowRight size={18} />}>
+                            Fund Builders Trustlessly
+                        </Button>
+                        <Button variant="outline" className="h-12 px-8 text-base" icon={<Icons.Play size={18} />}>
+                            View Demo Flow
+                        </Button>
+                    </div>
+
+                    {/* Visual: Cross-chain Capital Flow */}
+                    <div className="mt-12 p-8 bg-galleon-sand/30 rounded-2xl border border-galleon-ink/5 max-w-3xl mx-auto">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                            {/* Ethereum */}
+                            <div className="flex flex-col items-center">
+                                <div className="w-16 h-16 bg-galleon-cream rounded-2xl border border-galleon-ink/10 flex items-center justify-center mb-3 shadow-sm">
+                                    <EthIcon size={32} />
+                                </div>
+                                <span className="font-mono text-sm font-bold">Ethereum</span>
+                                <span className="text-xs text-galleon-ink/50">USDC Pool</span>
+                            </div>
+
+                            {/* Arrow */}
+                            <div className="flex flex-col items-center gap-1">
+                                <Icons.ArrowRight className="text-galleon-orange rotate-90 md:rotate-0" size={24} />
+                                <span className="text-xs font-mono text-galleon-ink/30">BRIDGE</span>
+                            </div>
+
+                            {/* Stacks */}
+                            <div className="flex flex-col items-center">
+                                <div className="w-16 h-16 bg-galleon-cream rounded-2xl border border-galleon-ink/10 flex items-center justify-center mb-3 shadow-sm">
+                                    <StacksIcon size={32} />
+                                </div>
+                                <span className="font-mono text-sm font-bold">Stacks</span>
+                                <span className="text-xs text-galleon-ink/50">USDCx Escrow</span>
+                            </div>
+
+                            {/* Arrow */}
+                            <div className="flex flex-col items-center gap-1">
+                                <Icons.ArrowRight className="text-galleon-orange rotate-90 md:rotate-0" size={24} />
+                                <span className="text-xs font-mono text-galleon-ink/30">RELEASE</span>
+                            </div>
+
+                            {/* Builder */}
+                            <div className="flex flex-col items-center">
+                                <div className="w-16 h-16 bg-galleon-orange rounded-2xl flex items-center justify-center mb-3 shadow-sm">
+                                    <Icons.Code className="text-galleon-ink" size={28} />
+                                </div>
+                                <span className="font-mono text-sm font-bold">Builder</span>
+                                <span className="text-xs text-galleon-ink/50">Milestone Unlock</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Section>
 
-            {/* 3. SOLUTION SECTION */}
-            <Section className="bg-aegis-sand/30 border-y border-aegis-ink/5">
+            {/* ========================================
+          2. THE PROBLEM (Ecosystem-Level Framing)
+      ======================================== */}
+            <Section className="bg-galleon-cream border-t border-galleon-ink/5" id="problem">
                 <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                            Aegis Solves This With{" "}
-                            <span className="text-aegis-orange">Programmable Escrow</span>
+                    {/* Section Header */}
+                    <div className="mb-16">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                            The Bottleneck
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+                            Ethereum Liquidity Does Not Flow Into Bitcoin.
                         </h2>
-                        <p className="text-lg text-aegis-ink/70 max-w-2xl mx-auto">
-                            A trustless tunnel for stable capital, enforced by Bitcoin
-                            finality.
+                        <p className="text-lg text-galleon-ink/70 leading-relaxed max-w-2xl">
+                            Ethereum holds the capital—VCs, DAOs, and relentless stablecoin volume.
+                            Real Bitcoin L2 innovation is happening on Stacks.
+                            But the bridge between them is broken.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-4 relative">
-                        {/* Connector Line Desktop */}
-                        <div className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-[80%] h-0.5 bg-aegis-ink/10 -z-10"></div>
+                    {/* Problem Cards */}
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <ProblemCard
+                            index={1}
+                            icon={<Icons.ShieldAlert size={24} />}
+                            title="Manual Bridging Friction"
+                            description="Investors refuse to navigate complex, multi-step bridges. Liquidity remains trapped on Ethereum."
+                        />
+                        <ProblemCard
+                            index={2}
+                            icon={<Icons.Lock size={24} />}
+                            title="No On-Chain Enforcement"
+                            description="Grants are sent on trust. There is no programmable clawback if a builder disappears."
+                        />
+                        <ProblemCard
+                            index={3}
+                            icon={<Icons.TrendingUp size={24} />}
+                            title="Volatility Risk"
+                            description="Funding in BTC or STX exposes builders to market crashes. Payroll requires stablecoins."
+                        />
+                    </div>
 
+                    {/* Outcome Statement */}
+                    <div className="mt-12 p-6 bg-galleon-ink text-galleon-cream rounded-xl text-center">
+                        <p className="font-mono text-lg">
+                            Outcome: <span className="text-galleon-orange font-bold">Ethereum liquidity does not flow into Bitcoin builders.</span>
+                        </p>
+                    </div>
+                </div>
+            </Section>
+
+            {/* ========================================
+          3. THE SOLUTION: GALLEON
+      ======================================== */}
+            <Section className="bg-galleon-ink text-galleon-cream" id="solution">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                        {/* Left: Copy */}
+                        <div>
+                            <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                                Protocol Infrastructure
+                            </span>
+                            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                                GALLEON
+                            </h2>
+                            <p className="text-xl text-galleon-cream/80 mb-8 leading-relaxed">
+                                A trustless, programmable cross-chain escrow protocol.
+                            </p>
+
+                            <div className="space-y-5 text-galleon-cream/70">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-6 h-6 rounded-full bg-galleon-orange/20 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                    </div>
+                                    <p>Investors deposit <span className="text-galleon-cream font-medium">USDC on Ethereum</span></p>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-6 h-6 rounded-full bg-galleon-orange/20 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                    </div>
+                                    <p>USDC is bridged and minted as <span className="text-galleon-cream font-medium">USDCx on Stacks</span></p>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-6 h-6 rounded-full bg-galleon-orange/20 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                    </div>
+                                    <p>Funds are <span className="text-galleon-cream font-medium">locked in Clarity smart contracts</span></p>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-6 h-6 rounded-full bg-galleon-orange flex items-center justify-center shrink-0 mt-0.5">
+                                        <Icons.CheckCircle size={14} className="text-galleon-ink" />
+                                    </div>
+                                    <p className="text-galleon-cream font-bold">Capital is released only when milestones are met</p>
+                                </div>
+                            </div>
+
+                            {/* Key Quote */}
+                            <blockquote className="mt-10 pl-6 border-l-4 border-galleon-orange">
+                                <p className="text-2xl font-serif italic text-galleon-orange">
+                                    &ldquo;USDCx is not just transferred. It is programmed.&rdquo;
+                                </p>
+                            </blockquote>
+                        </div>
+
+                        {/* Right: Code Preview */}
+                        <div className="relative">
+                            <div className="absolute -inset-4 bg-galleon-orange/10 blur-3xl rounded-full" />
+                            <CodeBlock
+                                title="GALLEON Clarity Contract"
+                                code={[
+                                    "(define-public (create-escrow",
+                                    "    (investor principal)",
+                                    "    (builder principal)",
+                                    "    (amount uint)",
+                                    "    (milestones (list 5 uint))))",
+                                    "",
+                                    "(define-public (release-milestone",
+                                    "    (escrow-id uint)",
+                                    "    (milestone-index uint)))",
+                                    "",
+                                    "(define-public (clawback",
+                                    "    (escrow-id uint)))",
+                                ]}
+                                className="relative z-10 shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+            {/* ========================================
+          4. HOW IT WORKS (Step-by-Step Flow)
+      ======================================== */}
+            <Section className="bg-galleon-sand/20" id="architecture">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                            Technical Flow
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                            Protocol Architecture
+                        </h2>
+                        <p className="text-galleon-ink/60 max-w-xl mx-auto">
+                            A clean 3-layer system bridging Ethereum capital to Bitcoin builders.
+                        </p>
+                    </div>
+
+                    <div className="space-y-0">
+                        <FlowStep
+                            number="01"
+                            title="Investor Deposits USDC"
+                            description="Investor connects MetaMask, defines builder address, amount, and milestone schedule. USDC enters the GALLEON Vault on Ethereum Mainnet."
+                            icon={<EthIcon size={28} />}
+                            layer="ethereum"
+                        />
+                        <FlowStep
+                            number="02"
+                            title="Circle xReserve Bridge"
+                            description="Powered by Circle xReserve protocol + Stacks attestation. USDC is burned on Ethereum and minted 1:1 as USDCx on Stacks L2."
+                            icon={<BridgeIcon size={28} />}
+                            layer="bridge"
+                        />
+                        <FlowStep
+                            number="03"
+                            title="Clarity Escrow Holds Funds"
+                            description="USDCx enters a Clarity smart contract. Funds are owned by the contract, not the builder. Milestone-based releases. Clawback if conditions fail."
+                            icon={<StacksIcon size={28} />}
+                            layer="stacks"
+                            isLast
+                        />
+                    </div>
+                </div>
+            </Section>
+
+            {/* ========================================
+          5. CORE SMART CONTRACT CAPABILITIES
+      ======================================== */}
+            <Section className="bg-galleon-cream">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                            Clarity Contract
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                            Core Smart Contract Capabilities
+                        </h2>
+                        <p className="text-galleon-ink/60 max-w-xl mx-auto">
+                            Enforcement is on-chain, not social. Funds are owned by the contract, not the builder.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-4 gap-4">
                         {[
                             {
-                                id: 1,
-                                title: "Deposit USDC",
-                                desc: "Investor deposits USDC into Aegis Vault on Ethereum Mainnet.",
+                                fn: "create-escrow",
+                                desc: "Initializes vault with investor, builder, amount, and milestone schedule.",
                             },
                             {
-                                id: 2,
-                                title: "Bridge & Mint",
-                                desc: "Circle xReserve protocol mints 1:1 USDCx on Stacks L2.",
+                                fn: "release-milestone",
+                                desc: "Unlocks a portion of funds upon verified proof submission.",
                             },
                             {
-                                id: 3,
-                                title: "Smart Lock",
-                                desc: "USDCx enters a Clarity contract governed by pre-set milestones.",
+                                fn: "clawback",
+                                desc: "Returns remaining funds to investor if milestones fail or timeout.",
                             },
                             {
-                                id: 4,
-                                title: "Milestone Release",
-                                desc: "Builder submits proof. Oracle verifies. Funds unlock automatically.",
+                                fn: "dao-approve",
+                                desc: "Optional multisig hook for DAO governance or committee voting.",
                             },
-                        ].map((step) => (
+                        ].map((item, i) => (
                             <div
-                                key={step.id}
-                                className="bg-aegis-cream p-6 rounded-lg border border-aegis-ink/5 relative group hover:-translate-y-1 transition-transform duration-300"
+                                key={i}
+                                className="bg-galleon-sand/30 p-6 rounded-xl border border-galleon-ink/5 hover:border-galleon-orange/30 transition-colors group"
                             >
-                                <div className="w-8 h-8 bg-aegis-ink text-aegis-cream font-mono font-bold flex items-center justify-center rounded mb-4 text-sm z-10 relative">
-                                    0{step.id}
+                                <div className="font-mono text-galleon-orange font-bold text-sm mb-3 group-hover:underline">
+                                    ({item.fn})
                                 </div>
-                                <h3 className="font-bold text-lg mb-2">{step.title}</h3>
-                                <p className="text-sm text-aegis-ink/70 leading-relaxed">
-                                    {step.desc}
+                                <p className="text-sm text-galleon-ink/70 leading-relaxed">
+                                    {item.desc}
                                 </p>
                             </div>
                         ))}
@@ -174,241 +323,282 @@ export default function Home() {
                 </div>
             </Section>
 
-            {/* 4. WHY STACKS */}
-            <Section>
-                <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <div className="inline-block px-3 py-1 mb-6 border border-aegis-ink/20 rounded font-mono text-xs uppercase font-bold tracking-widest text-aegis-ink/60">
-                            Technical Architecture
-                        </div>
-                        <h2 className="text-4xl font-bold tracking-tight mb-6">
-                            Why This Works Only On <br className="hidden md:block" /> Stacks
+            {/* ========================================
+          6. USER EXPERIENCE FLOW
+      ======================================== */}
+            <Section className="border-y border-galleon-ink/5" id="demo">
+                <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                            Dual Interface
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                            User Experience Flow
                         </h2>
-                        <p className="text-lg text-aegis-ink/70 mb-8 leading-relaxed">
-                            Aegis leverages Stacks&apos; unique property as a Bitcoin Layer 2
-                            with read-access to Bitcoin state, enabling truly decentralized
-                            financial logic settled on the world&apos;s most secure chain.
-                        </p>
-
-                        <ul className="space-y-6">
-                            {[
-                                {
-                                    label: "Bitcoin Security",
-                                    text: "All transactions settle on Bitcoin.",
-                                },
-                                {
-                                    label: "Clarity Contracts",
-                                    text: "Decidable language prevents reentrancy bugs.",
-                                },
-                                {
-                                    label: "Deterministic Execution",
-                                    text: "Predictable gas and precise logic.",
-                                },
-                                {
-                                    label: "USDCx Native",
-                                    text: "Official programmable stablecoin standard.",
-                                },
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                                    <div className="mt-1 min-w-[6px] h-[6px] bg-aegis-orange rounded-full"></div>
-                                    <div>
-                                        <span className="font-bold block mb-1">{item.label}</span>
-                                        <span className="text-sm text-aegis-ink/70">
-                                            {item.text}
-                                        </span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="bg-aegis-ink text-aegis-cream p-8 rounded-xl font-mono text-sm leading-relaxed overflow-hidden relative shadow-2xl">
-                        <div className="absolute top-0 right-0 p-4 opacity-20">
-                            <Icons.Code size={48} />
-                        </div>
-                        <div className="opacity-80">
-                            <p className="text-aegis-orange mb-4">
-                                ;; Aegis Escrow Logic (Clarity)
-                            </p>
-                            <p className="mb-2">
-                                <span className="text-purple-300">(define-public</span>{" "}
-                                (release-milestone)
-                            </p>
-                            <p className="pl-4 mb-2">
-                                <span className="text-purple-300">(begin</span>
-                            </p>
-                            <p className="pl-8 mb-2">
-                                <span className="text-purple-300">(asserts!</span> (is-eq
-                                (var-get status) &quot;LOCKED&quot;) (err u101))
-                            </p>
-                            <p className="pl-8 mb-2">
-                                <span className="text-purple-300">(asserts!</span>{" "}
-                                (is-valid-proof tx-sender) (err u102))
-                            </p>
-                            <p className="pl-8 mb-2">
-                                <span className="text-aegis-sand">
-                                    ;; Unlock USDCx to builder
-                                </span>
-                            </p>
-                            <p className="pl-8 mb-2">
-                                <span className="text-purple-300">(try!</span> (ft-transfer?
-                                usdcx amount (as-contract tx-sender) builder))
-                            </p>
-                            <p className="pl-4 mb-2">
-                                <span className="text-purple-300">(ok true)</span>
-                            </p>
-                            <p className="mb-2">
-                                <span className="text-purple-300">)</span>
-                            </p>
-                            <p>
-                                <span className="text-purple-300">)</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* 5. PRODUCT UI PREVIEW */}
-            <Section className="bg-aegis-sand/20">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tight mb-4">
-                        One Protocol, Two Views
-                    </h2>
-                    <p className="text-aegis-ink/60">
-                        Transparency for the investor. Clarity for the builder.
-                    </p>
-                </div>
-                <div className="max-w-4xl mx-auto">
-                    <Dashboard />
-                </div>
-            </Section>
-
-            {/* 6. USE CASES */}
-            <Section>
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                    <div className="max-w-xl">
-                        <h2 className="text-4xl font-bold tracking-tight mb-4">
-                            Built for Capital at Scale
-                        </h2>
-                        <p className="text-lg text-aegis-ink/70">
-                            Infrastructure robust enough for foundations, flexible enough for
-                            hackathons.
+                        <p className="text-galleon-ink/60 max-w-xl mx-auto font-mono">
+                            &ldquo;All cross-chain complexity is abstracted away.&rdquo;
                         </p>
                     </div>
-                    <Button variant="secondary" icon={<Icons.ArrowRight size={16} />}>
-                        Read Whitepaper
-                    </Button>
-                </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                        {
-                            icon: <Icons.Trophy />,
-                            title: "Grants & Foundations",
-                            text: "Disburse large ecosystem funds with automated milestones.",
-                        },
-                        {
-                            icon: <Icons.Users />,
-                            title: "DAO Funding",
-                            text: "Community-governed treasuries deploying capital to sub-DAOs.",
-                        },
-                        {
-                            icon: <Icons.Code />,
-                            title: "Builder Bounties",
-                            text: "Trustless rewards for code contributions and bug fixes.",
-                        },
-                        {
-                            icon: <Icons.Briefcase />,
-                            title: "Payroll & Freelance",
-                            text: "Stream payroll in stablecoins based on deliverable tracking.",
-                        },
-                    ].map((card, i) => (
-                        <div
-                            key={i}
-                            className="bg-aegis-sand/40 p-6 rounded-lg hover:bg-aegis-sand transition-colors duration-300 border border-transparent hover:border-aegis-ink/5"
-                        >
-                            <div className="mb-4 text-aegis-ink">{card.icon}</div>
-                            <h3 className="font-bold text-lg mb-2">{card.title}</h3>
-                            <p className="text-sm text-aegis-ink/70 leading-relaxed">
-                                {card.text}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </Section>
-
-            {/* 7. TRUST & SECURITY */}
-            <Section className="bg-aegis-ink text-aegis-cream py-24">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 className="text-4xl font-bold tracking-tight mb-8">
-                            Security by Design
-                        </h2>
-                        <div className="space-y-6">
-                            {[
-                                "Non-custodial escrow architecture",
-                                "Fully on-chain enforcement logic",
-                                "Audited Clarity smart contracts",
-                                "Powered by Circle xReserve Bridge",
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-4">
-                                    <div className="w-6 h-6 rounded-full bg-aegis-orange flex items-center justify-center shrink-0">
-                                        <Icons.CheckCircle size={14} className="text-aegis-ink" />
-                                    </div>
-                                    <span className="font-mono text-lg">{item}</span>
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
+                        {/* Investor Column */}
+                        <div className="bg-galleon-cream p-8 rounded-2xl border border-galleon-ink/10">
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="w-10 h-10 rounded-xl bg-galleon-ink text-galleon-cream flex items-center justify-center">
+                                    <EthIcon size={20} />
                                 </div>
-                            ))}
+                                <div>
+                                    <h3 className="font-bold text-lg">Investor</h3>
+                                    <span className="text-xs text-galleon-ink/50 font-mono">ETHEREUM</span>
+                                </div>
+                            </div>
+                            <ul className="space-y-4">
+                                {[
+                                    { icon: <Icons.Wallet size={18} />, text: "Connect MetaMask" },
+                                    { icon: <Icons.FileText size={18} />, text: "Define builder, amount, milestones" },
+                                    { icon: <Icons.DollarSign size={18} />, text: "Deposit USDC" },
+                                    { icon: <Icons.TrendingUp size={18} />, text: "Track escrowed, released, remaining USDCx" },
+                                ].map((item, i) => (
+                                    <li
+                                        key={i}
+                                        className="flex items-center gap-4 p-4 bg-galleon-sand/30 rounded-lg border border-galleon-ink/5"
+                                    >
+                                        <span className="text-galleon-ink/40">{item.icon}</span>
+                                        <span className="text-sm font-medium">{item.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Builder Column */}
+                        <div className="bg-galleon-cream p-8 rounded-2xl border border-galleon-orange/20 shadow-lg">
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="w-10 h-10 rounded-xl bg-galleon-orange text-galleon-ink flex items-center justify-center">
+                                    <StacksIcon size={20} />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg">Builder</h3>
+                                    <span className="text-xs text-galleon-ink/50 font-mono">STACKS</span>
+                                </div>
+                            </div>
+                            <ul className="space-y-4">
+                                {[
+                                    { icon: <Icons.Wallet size={18} />, text: "Connect Leather or Xverse" },
+                                    { icon: <Icons.Lock size={18} />, text: "View locked USDCx" },
+                                    { icon: <Icons.CheckCircle size={18} />, text: "Submit milestones" },
+                                    { icon: <Icons.Zap size={18} />, text: "Receive released funds instantly" },
+                                ].map((item, i) => (
+                                    <li
+                                        key={i}
+                                        className="flex items-center gap-4 p-4 bg-galleon-sand/30 rounded-lg border border-galleon-ink/5"
+                                    >
+                                        <span className="text-galleon-orange">{item.icon}</span>
+                                        <span className="text-sm font-medium">{item.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
-                    <div className="relative h-full min-h-[300px] flex items-center justify-center border-l border-aegis-cream/10 pl-12">
-                        <div className="text-center opacity-40">
-                            <Icons.ShieldAlert size={120} strokeWidth={1} />
-                            <div className="font-mono mt-4 text-sm">
-                                AUDITED BY
-                                <br />
-                                SENTINEL SECURITY
+                </div>
+            </Section>
+
+            {/* ========================================
+          7. DEMO SCOPE (Hackathon-Realistic)
+      ======================================== */}
+            <Section className="bg-galleon-sand/10">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-12">
+                        <div className="inline-block px-4 py-2 bg-galleon-ink text-galleon-cream rounded-lg text-xs font-mono font-bold uppercase tracking-widest mb-6">
+                            Live Demo Environment
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                            Production-Ready Architecture
+                        </h2>
+                        <p className="text-galleon-ink/60 max-w-xl mx-auto">
+                            Judges: This is what we built. Honest + feasible, not hand-waving.
+                        </p>
+                    </div>
+
+                    <div className="bg-galleon-cream p-8 rounded-2xl border border-galleon-ink/10 shadow-sm">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 className="font-bold mb-4 text-galleon-orange flex items-center gap-2">
+                                    <Icons.Code size={18} />
+                                    Backend & Contracts
+                                </h4>
+                                <ul className="space-y-3 text-sm text-galleon-ink/70 font-mono">
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        Clarity Escrow Contract (Deployed on Testnet)
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        USDCx Minting Oracle (Mocked for Demo)
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        Stacks Node Connection
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold mb-4 text-galleon-orange flex items-center gap-2">
+                                    <Icons.Layers size={18} />
+                                    Frontend Interface
+                                </h4>
+                                <ul className="space-y-3 text-sm text-galleon-ink/70 font-mono">
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        Dual Dashboard (Investor / Builder)
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        Web3 Wallet Integration
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <Icons.CheckCircle size={14} className="text-galleon-orange" />
+                                        Real-time Escrow Tracking
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </Section>
 
-            {/* 8. FINAL CTA */}
-            <Section className="text-center py-32">
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-8 max-w-4xl mx-auto leading-tight">
-                    Bring Ethereum Capital to <br />{" "}
-                    <span className="text-aegis-orange">Bitcoin Builders</span>
-                </h2>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-                    <Button
-                        className="w-full sm:w-auto h-14 px-8 text-base"
-                        icon={<Icons.Play size={16} />}
-                    >
-                        Launch Demo
-                    </Button>
-                    <Button
-                        variant="outline"
-                        className="w-full sm:w-auto h-14 px-8 text-base"
-                        icon={<Icons.Github size={16} />}
-                    >
-                        View GitHub
-                    </Button>
-                </div>
+            {/* ========================================
+          8. WHY GALLEON WINS (Judge-Focused)
+      ======================================== */}
+            <Section className="bg-galleon-ink text-galleon-cream">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                            Competitive Edge
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                            Why GALLEON Wins
+                        </h2>
+                    </div>
 
-                <div className="mt-20 border-t border-aegis-ink/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-mono text-aegis-ink/40 w-full">
-                    <p>© 2024 Aegis Protocol. Open Source.</p>
-                    <div className="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-aegis-ink">
-                            Documentation
-                        </a>
-                        <a href="#" className="hover:text-aegis-ink">
-                            Governance
-                        </a>
-                        <a href="#" className="hover:text-aegis-ink">
-                            Security
-                        </a>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {[
+                            {
+                                title: "Deep USDCx Programmability",
+                                desc: "Not a simple bridge. We verify deliverables on L2 before releasing L1 capital.",
+                            },
+                            {
+                                title: "Solves A Real Ecosystem Bottleneck",
+                                desc: "Bitcoin builders are starving for stable capital. Ethereum has it. We connect them.",
+                            },
+                            {
+                                title: "Uniquely Stacks",
+                                desc: "Only Stacks can read Bitcoin state, allowing future expansion to BTC-based milestones.",
+                            },
+                            {
+                                title: "Immediately Usable",
+                                desc: "Ready today for Stacks Foundation, ICC, DAOs, bounties, and freelance payroll.",
+                            },
+                        ].map((item, i) => (
+                            <div
+                                key={i}
+                                className="p-6 border border-galleon-cream/10 rounded-xl hover:border-galleon-orange/30 transition-colors"
+                            >
+                                <h3 className="font-bold text-lg mb-3 text-galleon-orange">
+                                    {item.title}
+                                </h3>
+                                <p className="text-galleon-cream/70 text-sm leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </Section>
+
+            {/* ========================================
+          9. WHY THIS MATTERS FOR STACKS
+      ======================================== */}
+            <Section className="bg-galleon-cream">
+                <div className="max-w-3xl mx-auto text-center">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-galleon-orange mb-4 block">
+                        Ecosystem Impact
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+                        More Than An App. It&apos;s Infrastructure.
+                    </h2>
+                    <p className="text-lg text-galleon-ink/70 leading-relaxed mb-8">
+                        GALLEON is a liquidity gateway. By making it safe for Ethereum capital to enter the ecosystem,
+                        we permanently increase the GDP of Stacks. This is not a toy dApp—it&apos;s a long-term funding primitive.
+                    </p>
+
+                    <div className="grid grid-cols-3 gap-4 mt-12">
+                        <div className="p-6 bg-galleon-sand/30 rounded-xl border border-galleon-ink/5">
+                            <div className="text-2xl font-bold font-mono text-galleon-ink mb-1">$∞</div>
+                            <div className="text-xs text-galleon-ink/50 font-mono">ETH Liquidity</div>
+                        </div>
+                        <div className="p-6 bg-galleon-sand/30 rounded-xl border border-galleon-ink/5">
+                            <div className="text-2xl font-bold font-mono text-galleon-orange mb-1">→</div>
+                            <div className="text-xs text-galleon-ink/50 font-mono">GALLEON</div>
+                        </div>
+                        <div className="p-6 bg-galleon-sand/30 rounded-xl border border-galleon-ink/5">
+                            <div className="text-2xl font-bold font-mono text-galleon-ink mb-1">BTC</div>
+                            <div className="text-xs text-galleon-ink/50 font-mono">Builders</div>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+            {/* ========================================
+          10. FINAL CALL TO ACTION
+      ======================================== */}
+            <Section className="bg-galleon-sand/20 border-t border-galleon-ink/5 py-24 md:py-32">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
+                        GALLEON brings Ethereum capital into Bitcoin<br />
+                        <span className="text-galleon-orange">safely, transparently, and programmatically.</span>
+                    </h2>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+                        <Button className="h-14 px-10 text-lg" icon={<Icons.Play size={20} />}>
+                            Explore the Demo
+                        </Button>
+                        <Button variant="outline" className="h-14 px-10 text-lg" icon={<Icons.FileText size={20} />}>
+                            Read the Architecture
+                        </Button>
+                    </div>
+                </div>
+            </Section>
+
+            {/* ========================================
+          FOOTER
+      ======================================== */}
+            <footer className="bg-galleon-cream border-t border-galleon-ink/5 py-12">
+                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex items-center gap-4">
+                        <Image
+                            src="/galleon.png"
+                            alt="Galleon Logo"
+                            width={32}
+                            height={32}
+                            className="rounded-md"
+                        />
+                        <span className="text-xs font-mono text-galleon-ink/40">
+                            © 2024 GALLEON Protocol. Built for Bitcoin Olympics.
+                        </span>
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <a href="#" className="text-xs font-mono text-galleon-ink/40 hover:text-galleon-ink transition-colors">
+                            Documentation
+                        </a>
+                        <a href="#" className="text-xs font-mono text-galleon-ink/40 hover:text-galleon-ink transition-colors">
+                            GitHub
+                        </a>
+                        <a href="#" className="text-xs font-mono text-galleon-ink/40 hover:text-galleon-ink transition-colors">
+                            Architecture
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

@@ -9,7 +9,7 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                aegis: {
+                galleon: {
                     cream: "#FAF3E1",
                     sand: "#F5E7C6",
                     orange: "#FF6D1F",

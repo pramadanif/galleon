@@ -13,7 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Aegis Protocol",
+    title: "Galleon",
     description:
         "Programmable USDCx Escrow - Bringing Ethereum capital to Bitcoin builders through deterministic execution.",
 };

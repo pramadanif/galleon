@@ -16,11 +16,11 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variants = {
     // Primary: Orange bg, Dark text (Industrial look)
-    primary: "bg-aegis-orange text-aegis-ink hover:opacity-90 shadow-md",
+    primary: "bg-galleon-orange text-galleon-ink hover:opacity-90 shadow-md",
     // Secondary: Sand bg, Dark text
-    secondary: "bg-aegis-sand text-aegis-ink hover:bg-opacity-80",
+    secondary: "bg-galleon-sand text-galleon-ink hover:bg-opacity-80",
     // Outline: Transparent bg, Dark border
-    outline: "bg-transparent border-aegis-ink text-aegis-ink hover:bg-aegis-sand"
+    outline: "bg-transparent border-galleon-ink text-galleon-ink hover:bg-galleon-sand"
   };
 
   return (
