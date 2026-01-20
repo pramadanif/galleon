@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  ArrowLeft,
   ShieldAlert,
   Link,
   TrendingUp,
@@ -24,10 +25,13 @@ import {
   DollarSign,
   Menu,
   X,
+  Plus,
+  AlertTriangle,
 } from "lucide-react";
 
 export const Icons = {
   ArrowRight,
+  ArrowLeft,
   ShieldAlert,
   Link,
   TrendingUp,
@@ -52,6 +56,8 @@ export const Icons = {
   DollarSign,
   Menu,
   X,
+  Plus,
+  AlertTriangle,
 };
 
 // Custom Ethereum Icon
